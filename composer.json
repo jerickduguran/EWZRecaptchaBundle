@@ -7,6 +7,11 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Jerick Y. Duguran",
+            "email": "jerick.duguran@gmail.com",
+            "homepage": "http://webprintave.com/"
+        },
+        {
             "name": "Michael H. Arieli",
             "email": "excelwebzone@gmail.com",
             "homepage": "http://excelwebzone.com/"
