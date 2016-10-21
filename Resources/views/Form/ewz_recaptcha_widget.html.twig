@@ -3,7 +3,18 @@
 {% spaceless %}
     {% if form.vars.ewz_recaptcha_enabled %}
         {% if not form.vars.ewz_recaptcha_ajax %}
-            <script type='text/javascript'>
+            <script type='text/javascript'> 
+                var initRecField{{fid}} = function()
+                {            
+                    grecaptcha.render('ewz_recaptcha_div{{fid}}', {
+                        'sitekey' : '{{form.vars.public_key}}',
+                        'theme'   : '{{ attr.options.theme }}',
+                        'size'    : '{{ attr.options.size }}',
+                        'type'    : '{{ attr.options.type }}',
+                        'expired-callback' : '{{ attr.options.expiredCallback }}'
+                    }); 
+                } 
+                
                 var timerIdCtr{{fid}} = 0;
                 var timerId{{fid}}Call =  function(){
                     if(typeof window.recaptcha_ready !== 'undefined'){ 
@@ -24,17 +35,6 @@
                     }
                 };   
                 recapcthaChecker{{fid}}(); 
-                
-                var initRecField{{fid}} = function()
-                {            
-                    grecaptcha.render('ewz_recaptcha_div{{fid}}', {
-                        'sitekey' : '{{form.vars.public_key}}',
-                        'theme'   : '{{ attr.options.theme }}',
-                        'size'    : '{{ attr.options.size }}',
-                        'type'    : '{{ attr.options.type }}',
-                        'expired-callback' : '{{ attr.options.expiredCallback }}'
-                    }); 
-                }
             </script> 
             <div class="g-recaptcha" id="ewz_recaptcha_div{{fid}}"></div>
             <noscript>
